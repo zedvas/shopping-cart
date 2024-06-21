@@ -6,7 +6,7 @@ class Products extends Component {
         return (
         <div className='container'>
         {this.props.products.map(product=> {
-            return <Product key={product.id} product={product}/>
+            return <Product key={product.id} product={product} onLike={this.props.onLike} onAdd={this.props.onAdd} />
         })}
         </div>
     );

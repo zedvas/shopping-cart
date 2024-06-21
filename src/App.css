@@ -69,10 +69,22 @@ position: relative;}
   cursor: pointer
 }
 .button.add {
-  background-color: rgb(136, 174, 75);
+  background-color: rgba(136, 174, 75, 0.486);
+}
+.button.add:hover {
+  background-color: rgba(136, 174, 75);
 }
 .button.like {
-  background-color: rgb(174, 75, 129);
+  background-color: rgba(174, 75, 129, 0.504);
+}
+.button.like:hover {
+  background-color:rgb(174, 75, 129);
+}
+.liked {
+  background-color:rgb(174, 75, 129);
+}
+.added {
+  background-color: rgba(136, 174, 75);
 }
 .cartProduct {
   display:flex;

@@ -7,9 +7,10 @@ import Rating from './Rating';
 import Controls from './Controls';
 class Product extends Component {
     state = {  } 
-    render() { 
-        const {category, image, price, rating:{rate}, title} = this.props.product
-        return (
+    render() {    
+
+        const {onLike, onAdd, product:{category, id, image, price, rating:{rate}, title, liked}} = this.props
+return (
         <>
         <div className='product'>
             <Category category={category}/>
@@ -17,7 +18,7 @@ class Product extends Component {
             <Image title={title} image={image}/>
             <Price price={price}/>
             <Rating rate={rate}/>
-            <Controls/>
+            <Controls id={id}  onAdd={this.props.onAdd} onLike={onLike} liked={liked}/>
         </div>
         </>
     );

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import CartProduct from "./CartProduct";
 import Button from "./Button";
+
 class Cart extends Component {
   state = {};
   render() {
     return (
       <div className="cart">
+        
         <div className="products">
 <CartProduct title={"product1"} price={200} quantity={1}/>
 <CartProduct title={"product2"} price={150} quantity={1}/>
