@@ -51,14 +51,14 @@ border:1px solid black;
 margin: 1em;
 display:flex;
 flex-direction: column;
-justify-content: center;
+justify-content: space-betweengit ;
 align-items: center;
 position: relative;}
 .product .title {
   text-align: center;
 }
 .cart {
-  background-color:#fbbb61;
+  background-color:#bcd3f4;
   ;
   display:flex;
   flex-direction: column;
@@ -112,7 +112,7 @@ position: relative;}
   width: 100%;
   justify-content: space-between;
   margin: 1em 0;
-  background-color: #c8811d;
+  background-color: #7ea4ea;
 
 }
 
