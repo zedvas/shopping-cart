@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 class Price extends Component {
-    state = {  } 
-    render() { 
-        return (<p className='price'>{Math.round(Number(this.props.price))}</p>);
-    }
+  state = {};
+  render() {
+    return (
+      <div>
+        <p>{this.props.priceName? this.props.priceName + ":":""} <span  className="price">{this.props.price}</span></p>
+      </div>
+    );
+  }
 }
- 
+
 export default Price;

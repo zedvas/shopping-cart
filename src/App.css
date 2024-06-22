@@ -47,19 +47,41 @@
 
 .product {
   width: 250px;
-background-color: #afa99f69;
+border:1px solid black;
 margin: 1em;
 display:flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
 position: relative;}
+.product .title {
+  text-align: center;
+}
+.cart {
+  background-color:#fbbb61;
+  ;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  right: 0;
+}
+.cart-info {
+  display: flex;
+  justify-content: flex-end
+}
+.cart > .products {
+  background-color: #c8811d;
+  max-height: 40vh;
+  overflow-y: scroll;
+  scrollbar-width: 30px;
 
+
+}
 .price::before {
   content: '£';
-}
-.controls {
-  position:absolute;
-  bottom: 0;
-  right: 0
 }
 .button {
   border:none;

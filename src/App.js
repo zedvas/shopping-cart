@@ -44,6 +44,10 @@ class App extends Component {
   async getData() {
     try {
       const data = await axios.get("https://fakestoreapi.com/products/");
+      data.data.map((item) => {
+        item.price = Math.round(Number(item.price));
+        return item;
+      });
       this.setState({ data: data.data });
     } catch (e) {
       console.log("oops something went wrong", e.message);
@@ -81,27 +85,44 @@ class App extends Component {
       data[index].quantity = data[index].quantity + 1;
     }
     this.setState({ data });
-    console.log(data);
   };
+  changeQuantity = (id, value) => {
+    let data = [...this.state.data];
+    const index = data.findIndex((item) => {
+      return item.id === id;
+    });
+    if (value === "increment") {    data[index].quantity = data[index].quantity + 1;
+} else if (value === "decrement") {
+  data[index].quantity = data[index].quantity - 1
+}
+    console.log(data[index].quantity)
 
+    this.setState({ data });
+  };
   render() {
     if (!this.state.data) {
       return <h2>Hold tight, we're getting your products...</h2>; //only rendering if data exists - is this correct?
     }
-    
-    let cartProducts = [...this.state.data]
-    cartProducts = cartProducts.filter(item=>{return item.added})
-    
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    let cartProducts = [...this.state.data];
+    cartProducts = cartProducts.filter((item) => {
+      if (item.added) {
+        totalQuantity = totalQuantity + item.quantity;
+        totalPrice = totalPrice + item.price * item.quantity;
+        return item.added;
+      }
+    });
+
     return (
       <div>
+        <Cart
+          cartProducts={cartProducts}
+          totalPrice={totalPrice}
+          totalQuantity={totalQuantity}
+          changeQuantity={this.changeQuantity}
+        />
         <h1>You have liked {this.getTotalLiked()} products</h1>
-        {/* {this.state.data.filter(item=> {
-const filtered = item.added
-console.log(filtered)
-return         <Cart cartProducts={filtered} />
-
-        })} */}
-        <Cart cartProducts={cartProducts}/>
         <Products
           onLike={this.onLike}
           onAdd={this.onAdd}
