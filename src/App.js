@@ -5,7 +5,37 @@ import Cart from "./components/Cart";
 import "./App.css";
 
 class App extends Component {
-  state = {};
+  state = {
+    cartProducts: [
+      {
+        id: 1,
+        title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        price: 109.95,
+        description:
+          "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+        category: "men's clothing",
+        image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+        rating: {
+          rate: 3.9,
+          count: 120,
+        },
+        liked: true,
+      },
+      {
+        id: 9,
+        title: "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+        price: 64,
+        description:
+          "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
+        category: "electronics",
+        image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+        rating: {
+          rate: 3.3,
+          count: 203,
+        },
+      },
+    ],
+  };
 
   componentDidMount() {
     this.getData();
@@ -35,12 +65,31 @@ class App extends Component {
     });
     console.log(index);
     data[index].liked = !data[index].liked;
-    console.log(data[index].liked)
+    console.log(data[index].liked);
     this.setState({ data });
   };
 
   onAdd = (id) => {
-    console.log("added", id);
+    const data = [...this.state.data];
+    const index = data.findIndex((item) => {
+      return item.id === id;
+    });
+    const newData = [...this.state.cartProducts, data[index]];
+    const exists = this.checkExistingInCart(id);
+    if (exists === -1) {
+      console.log("added to cart");
+      this.setState({ cartProducts: newData });
+    } else {
+      console.log("it already exists");
+    }
+  };
+
+  checkExistingInCart = (id) => {
+    const cartProducts = [...this.state.cartProducts];
+    const index = cartProducts.findIndex((item) => {
+      return item.id === id;
+    });
+    return index;
   };
 
   render() {
@@ -51,7 +100,7 @@ class App extends Component {
     return (
       <div>
         <h1>You have liked {this.getTotalLiked()} products</h1>
-        <Cart />
+        <Cart cartProducts={this.state.cartProducts} />
         <Products
           onLike={this.onLike}
           onAdd={this.onAdd}

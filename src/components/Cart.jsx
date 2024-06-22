@@ -9,15 +9,14 @@ class Cart extends Component {
       <div className="cart">
         
         <div className="products">
-<CartProduct title={"product1"} price={200} quantity={1}/>
-<CartProduct title={"product2"} price={150} quantity={1}/>
-<CartProduct title={"product3"} price={90} quantity={1}/>
-<CartProduct title={"product4"} price={670} quantity={1}/>
+          {this.props.cartProducts.map(cartProduct=> {
+            return <CartProduct key={cartProduct.id} title={cartProduct.title} price={cartProduct.price} quantity={1}/>
+          })}
         </div>
         
         <h3>TOTAL PRICE</h3>
         <h3>TOTAL QTY</h3>
-        <Button name="checkout"/>
+        <Button name="checkout" callback={()=>{}}/>
 </div>
     );
   }
