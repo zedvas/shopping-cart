@@ -6,35 +6,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    cartProducts: [
-      {
-        id: 1,
-        title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-        price: 109.95,
-        description:
-          "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-        category: "men's clothing",
-        image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-        rating: {
-          rate: 3.9,
-          count: 120,
-        },
-        liked: true,
-      },
-      {
-        id: 9,
-        title: "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
-        price: 64,
-        description:
-          "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
-        category: "electronics",
-        image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
-        rating: {
-          rate: 3.3,
-          count: 203,
-        },
-      },
-    ],
+    cartProducts:[],
   };
 
   componentDidMount() {
@@ -67,7 +39,6 @@ class App extends Component {
     const index = data.findIndex((data) => {
       return data.id === id;
     });
-    console.log(index);
     data[index].liked = !data[index].liked;
     console.log(data[index].liked);
     this.setState({ data });
@@ -93,9 +64,9 @@ class App extends Component {
     });
     if (value === "increment") {    data[index].quantity = data[index].quantity + 1;
 } else if (value === "decrement") {
-  data[index].quantity = data[index].quantity - 1
+  if (data[index].quantity === 1) {data[index].added = false} else {
+  data[index].quantity = data[index].quantity - 1}
 }
-    console.log(data[index].quantity)
 
     this.setState({ data });
   };
@@ -106,6 +77,7 @@ class App extends Component {
     let totalQuantity = 0;
     let totalPrice = 0;
     let cartProducts = [...this.state.data];
+    
     cartProducts = cartProducts.filter((item) => {
       if (item.added) {
         totalQuantity = totalQuantity + item.quantity;
