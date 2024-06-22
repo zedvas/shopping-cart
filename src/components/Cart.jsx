@@ -10,7 +10,7 @@ class Cart extends Component {
         
         <div className="products">
           {this.props.cartProducts.map(cartProduct=> {
-            return <CartProduct key={cartProduct.id} title={cartProduct.title} price={cartProduct.price} quantity={1}/>
+            return <CartProduct key={cartProduct.id} title={cartProduct.title} price={cartProduct.price} quantity={cartProduct.quantity}/>
           })}
         </div>
         

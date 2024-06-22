@@ -70,37 +70,38 @@ class App extends Component {
   };
 
   onAdd = (id) => {
-    const data = [...this.state.data];
+    let data = [...this.state.data];
     const index = data.findIndex((item) => {
       return item.id === id;
     });
-    const newData = [...this.state.cartProducts, data[index]];
-    const exists = this.checkExistingInCart(id);
-    if (exists === -1) {
-      console.log("added to cart");
-      this.setState({ cartProducts: newData });
+    if (!data[index].added) {
+      data[index].added = true;
+      data[index].quantity = 1;
     } else {
-      console.log("it already exists");
+      data[index].quantity = data[index].quantity + 1;
     }
-  };
-
-  checkExistingInCart = (id) => {
-    const cartProducts = [...this.state.cartProducts];
-    const index = cartProducts.findIndex((item) => {
-      return item.id === id;
-    });
-    return index;
+    this.setState({ data });
+    console.log(data);
   };
 
   render() {
     if (!this.state.data) {
       return <h2>Hold tight, we're getting your products...</h2>; //only rendering if data exists - is this correct?
     }
-
+    
+    let cartProducts = [...this.state.data]
+    cartProducts = cartProducts.filter(item=>{return item.added})
+    
     return (
       <div>
         <h1>You have liked {this.getTotalLiked()} products</h1>
-        <Cart cartProducts={this.state.cartProducts} />
+        {/* {this.state.data.filter(item=> {
+const filtered = item.added
+console.log(filtered)
+return         <Cart cartProducts={filtered} />
+
+        })} */}
+        <Cart cartProducts={cartProducts}/>
         <Products
           onLike={this.onLike}
           onAdd={this.onAdd}
