@@ -94,7 +94,7 @@ class App extends Component {
           totalQuantity={totalQuantity}
           changeQuantity={this.changeQuantity}
         />
-        <h1>You have liked {this.getTotalLiked()} products</h1>
+        <h1 className="likedMessage">You have liked {this.getTotalLiked()} products</h1>
         <Products
           onLike={this.onLike}
           onAdd={this.onAdd}
