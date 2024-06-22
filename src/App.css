@@ -73,7 +73,6 @@ position: relative;}
   justify-content: flex-end
 }
 .cart > .products {
-  background-color: #c8811d;
   max-height: 40vh;
   overflow-y: scroll;
   scrollbar-width: 30px;
@@ -112,6 +111,9 @@ position: relative;}
   display:flex;
   width: 100%;
   justify-content: space-between;
+  margin: 1em 0;
+  background-color: #c8811d;
+
 }
 
 .cartProduct .title {
