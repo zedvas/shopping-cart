@@ -3,7 +3,7 @@ class Quantity extends Component {
     state = {  } 
     render() { 
         return (
-            <p>Qty: {this.props.quantity}</p>
+            <p>Qty: <span className='quantity'>{this.props.quantity}</span></p>
         );
     }
 }

@@ -17,6 +17,7 @@ class Cart extends Component {
               id={cartProduct.id}
               title={cartProduct.title}
               price={cartProduct.price}
+              image={cartProduct.image}
               quantity={cartProduct.quantity}
               totalPrice={cartProduct.price * cartProduct.quantity}
               changeQuantity={this.props.changeQuantity}
@@ -32,7 +33,7 @@ class Cart extends Component {
         <div className="cart-info">
           <div className="totals">
             <Price priceName={"TOTAL PRICE"} price={this.props.totalPrice} />
-            <p>TOTAL QTY: {this.props.totalQuantity}</p>
+            <p>TOTAL QTY: <span className="quantity">{this.props.totalQuantity}</span></p>
           </div>
           <Button name="checkout" callback={() => {}} />
         </div>

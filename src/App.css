@@ -110,8 +110,15 @@ position: relative;}
 }
 .cartProduct {
   display:flex;
-  width: 30%;
+  width: 100%;
   justify-content: space-between;
+}
+
+.cartProduct .title {
+width: 40%;
+}
+.cartProduct .buttonContainer {
+  width: 10%;
 }
 
 .button.checkout {
@@ -122,4 +129,8 @@ position: relative;}
   width: 100%;
   text-align: left;
 
+}
+
+.price, .quantity {
+  font-weight:800;
 }

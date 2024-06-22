@@ -3,7 +3,7 @@ class Image extends Component {
     state = {  } 
     render() { 
         return (
-            <img className="image" style={{width:"100px"}} src={this.props.image} alt={this.props.title}/>
+            <img className="image" style={{width:`${this.props.width}px`}} src={this.props.image} alt={this.props.title}/>
 
         );
     }

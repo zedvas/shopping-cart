@@ -15,7 +15,7 @@ return (
         <div className='product'>
             <Category category={category}/>
             <Title title={title}/>
-            <Image title={title} image={image}/>
+            <Image title={title} image={image} width={100}/>
             <Price price={price}/>
             <Rating rate={rate}/>
             <Controls id={id}  onAdd={this.props.onAdd} onLike={onLike} liked={liked}/>

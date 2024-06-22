@@ -3,6 +3,7 @@ import axios from "axios";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 import "./App.css";
+import Sort from "./components/Sort";
 
 class App extends Component {
   state = {
@@ -40,7 +41,6 @@ class App extends Component {
       return data.id === id;
     });
     data[index].liked = !data[index].liked;
-    console.log(data[index].liked);
     this.setState({ data });
   };
 
@@ -70,6 +70,15 @@ class App extends Component {
 
     this.setState({ data });
   };
+  onSort = (value) => {
+    const filteredData = this.state.data.sort((a,b)=>{
+      
+      if (value === "priceAsc") {if (a.price < b.price) {console.log("inpriceasc"); return -1}}
+      else if (value==="priceDesc") {if (a.price > b.price) {console.log("inpricedesc"); return -1}}
+      else if (value === "rating") {if (a.rating.rate > b.rating.rate) {console.log("in rate asc"); return -1}}
+      })
+      this.setState({data: filteredData}) // check if this can be done without setting state?
+ }
   render() {
     if (!this.state.data) {
       return <h2>Hold tight, we're getting your products...</h2>; //only rendering if data exists - is this correct?
@@ -95,6 +104,7 @@ class App extends Component {
           changeQuantity={this.changeQuantity}
         />
         <h1 className="likedMessage">You have liked {this.getTotalLiked()} products</h1>
+        <Sort onSort={this.onSort}/>
         <Products
           onLike={this.onLike}
           onAdd={this.onAdd}
