@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import Product from './Product';
-class Products extends Component {
-    state = {  } 
-    render() { 
+import Product from "./Product";
+const Products = ({ products, onLike, onAdd }) => {
+  return (
+    <div className="container">
+      {products.map((product) => {
         return (
-        <div className='container'>
-        {this.props.products.map(product=> {
-            return <Product key={product.id} product={product} onLike={this.props.onLike} onAdd={this.props.onAdd} />
-        })}
-        </div>
-    );
-    }
-}
- 
+          <Product
+            key={product.id}
+            product={product}
+            onLike={onLike}
+            onAdd={onAdd}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
 export default Products;

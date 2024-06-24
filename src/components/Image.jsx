@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-class Image extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <img className="image" style={{width:`${this.props.width}px`}} src={this.props.image} alt={this.props.title}/>
+const Image = ({ width, image, title }) => {
+  return (
+    <img
+      className="image"
+      style={{ width: `${width}px` }}
+      src={image}
+      alt={title}
+    />
+  );
+};
 
-        );
-    }
-}
- 
 export default Image;

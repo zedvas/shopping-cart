@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-class Quantity extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <p>Qty: <span className='quantity'>{this.props.quantity}</span></p>
-        );
-    }
-}
- 
+const Quantity = ({ quantity }) => {
+  return (
+    <p>
+      Qty: <span className="quantity">{quantity}</span>
+    </p>
+  );
+};
+
 export default Quantity;
