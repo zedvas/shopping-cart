@@ -1,3 +1,5 @@
+//no functionality yet. Will integrate into sort function and adapt
+
 const Filter = ({ onFilter }) => {
   return (
     <select onChange={(e) => onFilter(e.target.value)}>
@@ -11,3 +13,4 @@ const Filter = ({ onFilter }) => {
 };
 
 export default Filter;
+
