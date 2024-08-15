@@ -43,8 +43,7 @@ const App = () => {
     return _data.length;
   };
 
-
-//add prop of added:true and qty:1 to data obj or increment qty if it already exists. update state with new list
+  //add prop of added:true and qty:1 to data obj or increment qty if it already exists. update state with new list
   const onAdd = (id) => {
     let _data = [...data];
     const index = _data.findIndex((item) => {
@@ -59,7 +58,7 @@ const App = () => {
     setData(_data);
   };
 
-//determine which button was clicked, increment/decrement qty prop in obj. if qty is 1 and user wants to decrement, remove item from cart. update state
+  //determine which button was clicked, increment/decrement qty prop in obj. if qty is 1 and user wants to decrement, remove item from cart. update state
   const changeQuantity = (id, value) => {
     let _data = [...data];
     const index = _data.findIndex((item) => {
@@ -95,7 +94,7 @@ const App = () => {
           return -1;
         }
       }
-      return; 
+      return 0;
     });
 
     setData(filteredData); // Can it be done without setting state again?
