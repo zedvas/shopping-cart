@@ -11,12 +11,15 @@ const App = () => {
   //get data and format as required
   const getData = async () => {
     try {
-      const data = await axios.get("https://fakestoreapi.com/products/");
+    console.log("fetch");
+    const data = await axios.get("pets.json");
+    console.log(data.data);
       data.data.map((item) => {
         item.price = Math.round(Number(item.price));
         return item;
       });
       setData(data.data);
+      console.log(data.data);
     } catch (e) {
       console.log("oops something went wrong", e.message);
     }
@@ -120,7 +123,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <>
       <Cart
         cartProducts={cartProducts}
         totalPrice={totalPrice}
@@ -132,7 +135,7 @@ const App = () => {
       </h1>
       <Sort onSort={onSort} />
       <Products onLike={onLike} onAdd={onAdd} products={data} />
-    </div>
+    </>
   );
 };
 

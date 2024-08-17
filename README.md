@@ -11,3 +11,10 @@ This shopping cart app implements the following features:
 To be implemented: 
 - Filter by category feature
 - Search feature (?)
+
+ “Designed by Freepik” www.freepik.com
+ <a href="https://gratisography.com/photo/boxer-dog-animal/">Photo</a> courtesy of <a href="https://gratisography.com">Gratisography</a>
+ Copyright 2018 The Kirang Haerang Project Authors
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL

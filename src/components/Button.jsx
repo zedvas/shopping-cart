@@ -1,7 +1,8 @@
-const Button = ({ liked, name, value, id, callback }) => {
+import { AddCircle, Favorite } from "@mui/icons-material";
 
+const Button = ({ liked, name, value, id, callback }) => {
   const classText = liked ? `liked button {name}` : `button ${name}`;
-  
+
   return (
     <button
       className={classText}
@@ -9,7 +10,13 @@ const Button = ({ liked, name, value, id, callback }) => {
         callback(id, value);
       }}
     >
-      {name}
+      {name === "add" ? (
+        <AddCircle sx={{ fontSize: "50px", color: "rgb(230, 105, 21)" }} />
+      ) : name === "like" ? (
+        <Favorite sx={{ fontSize: "50px", color: "rgb(244, 87, 113)" }} />
+      ) : (
+        ""
+      )}
     </button>
   );
 };

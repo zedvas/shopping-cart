@@ -1,11 +1,10 @@
-const Image = ({ width, image, title }) => {
+const Image = ({image, title }) => {
   return (
+    <div className="imgContainer">
     <img
-      className="image"
-      style={{ width: `${width}px` }}
       src={image}
       alt={title}
-    />
+    /></div>
   );
 };
 

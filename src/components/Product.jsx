@@ -1,31 +1,23 @@
-import Category from "./Category";
 import Title from "./Title";
 import Image from "./Image";
 import Price from "./Price";
-import Rating from "./Rating";
 import Controls from "./Controls";
+import Personality from "./Personality";
 const Product = ({
   onLike,
   onAdd,
-  product: {
-    category,
-    id,
-    image,
-    price,
-    rating: { rate },
-    title,
-    liked,
-  },
+  product: { id, image, price, rating, title, liked },
 }) => {
   return (
     <>
-      <div className="product">
-        <Category category={category} />
-        <Title title={title} />
-        <Image title={title} image={image} width={100} />
-        <Price price={price} />
-        <Rating rate={rate} />
-        <Controls id={id} onAdd={onAdd} onLike={onLike} liked={liked} />
+      <div className="card">
+        <Image title={title} image={image} />
+        <div className="infoContainer">
+          <Title title={title} />
+          <Price price={price} />
+          <Personality rating={rating}/>
+          <Controls id={id} onAdd={onAdd} onLike={onLike} liked={liked} />
+        </div>
       </div>
     </>
   );
