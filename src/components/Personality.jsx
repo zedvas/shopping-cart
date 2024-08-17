@@ -8,6 +8,7 @@ const Personality = ({ rating }) => {
         name="disabled"
         value={rating}
         disabled
+        precision={0.1}
         sx={{ color: "yellow", fontSize: "40px" }}
       />
     </>

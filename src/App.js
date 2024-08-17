@@ -93,7 +93,7 @@ const App = () => {
           return -1;
         }
       } else if (value === "rating") {
-        if (a.rating.rate > b.rating.rate) {
+        if (a.rating > b.rating) {
           return -1;
         }
       }
