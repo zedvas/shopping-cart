@@ -14,9 +14,13 @@ const Product = ({
         <Image title={title} image={image} />
         <div className="infoContainer">
           <Title title={title} />
-          <Price price={price} />
-          <Personality rating={rating}/>
-          <Controls id={id} onAdd={onAdd} onLike={onLike} liked={liked} />
+          <div className="detailsContainer">
+            <div className="details">
+              <Price price={price} />
+              <Personality rating={rating} />
+            </div>
+            <Controls id={id} onAdd={onAdd} onLike={onLike} liked={liked} />
+          </div>
         </div>
       </div>
     </>

@@ -17,11 +17,11 @@ const Button = ({ liked, name, value, id, callback }) => {
       }}
     >
       {name === "add" ? (
-        <AddCircle sx={{ fontSize: "50px", color: "rgb(230, 105, 21)" }} />
+        <AddCircle sx={{ fontSize: "30px", color: "#4141f2" }} />
       ) : name === "like" && liked ? (
-        <Favorite sx={{ fontSize: "50px", color: "rgb(244, 87, 113)" }} />
+        <Favorite sx={{ fontSize: "30px", color: "rgb(244, 87, 113)" }} />
       ) : name === "like" && !liked ? (
-        <FavoriteBorder sx={{ fontSize: "50px", color: "rgb(244, 87, 113)" }} />
+        <FavoriteBorder sx={{ fontSize: "30px", color: "rgb(244, 87, 113)" }} />
       ) : name === "increment" ? (
         <Add sx={{ fontSize: "50px", color: "rgb(244, 87, 113)" }} />
       ) : name === "decrement" ? (

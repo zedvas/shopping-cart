@@ -1,9 +1,9 @@
 //no functionality yet. Will integrate into sort function and adapt
 
-const Filter = ({onFilter}) => {
+const Filter = ({onFilter, showFilter}) => {
   return (
-    <div className="filterButtonContainer" onClick={onFilter}>
-      <button value="">All pets</button>
+    <div className={!showFilter ? "hide filterButtonContainer": "filterButtonContainer"} onClick={onFilter}>
+      <button value="all">All pets</button>
       <button value="cats">Cats</button>
       <button value="dogs">Dogs</button>
       <button value="frogs">Frogs</button>

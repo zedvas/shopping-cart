@@ -17,6 +17,8 @@ import { Badge } from "@mui/material";
 const App = () => {
   const [data, setData] = useState([]);
   const [filteredAndSorted, setFilteredAndSorted] = useState([]);
+  const [showSort, setShowSort] = useState();
+  const [showFilter, setShowFilter] = useState();
 
   //get data and format as required
   const getData = async () => {
@@ -118,6 +120,8 @@ const App = () => {
     console.log(e.target.value);
     const _data = [...data];
     if (e.target.value === "" || e.target.value === undefined) {
+      return;
+    } else if (e.target.value === "all") {
       setFilteredAndSorted(data);
     } else {
       const filtered = _data.filter((pet) => {
@@ -126,6 +130,13 @@ const App = () => {
       });
       setFilteredAndSorted(filtered);
     }
+  };
+
+  const handleSortButton = () => {
+    setShowSort(!showSort);
+  };
+  const handleFilterButton = () => {
+    setShowFilter(!showFilter);
   };
 
   //Show loading message if no data
@@ -156,36 +167,47 @@ const App = () => {
         changeQuantity={changeQuantity}
       />
       <Header />
-      <div className="icons">
-        <div>
-          <p>Sort</p>
-          <SortIcon sx={{ fontSize: "3rem" }} />
-          <p>Filter</p>
-          <Tune sx={{ fontSize: "3rem" }} />
+      <div className="rootContainer">
+        <div className="icons">
+          <div>
+            <button
+              onClick={handleSortButton}
+              className={showSort ? "showSort" : ""}
+            >
+              <span>Sort</span>
+              <SortIcon sx={{ fontSize: "3rem" }} />
+            </button>
+            <button
+              onClick={handleFilterButton}
+              className={showFilter ? "showFilter" : ""}
+            >
+              <span>Filter</span> <Tune sx={{ fontSize: "3rem" }} />
+            </button>
+          </div>
+          <div>
+            <Badge
+              badgeContent={getTotalLiked()}
+              color="secondary"
+              showZero
+              sx={{ margin: "1em" }}
+            >
+              <Favorite sx={{ fontSize: "3rem" }} />
+            </Badge>
+            <Badge
+              badgeContent={totalQuantity}
+              color="secondary"
+              sx={{ margin: "1em" }}
+            >
+              <ShoppingCart sx={{ fontSize: "3rem" }} />
+            </Badge>
+          </div>
         </div>
-        <div>
-          <Badge
-            badgeContent={getTotalLiked()}
-            color="secondary"
-            showZero
-            sx={{ margin: "1em" }}
-          >
-            <Favorite sx={{ fontSize: "3rem" }} />
-          </Badge>
-          <Badge
-            badgeContent={totalQuantity}
-            color="secondary"
-            sx={{ margin: "1em" }}
-          >
-            <ShoppingCart sx={{ fontSize: "3rem" }} />
-          </Badge>
+        <div className="filterAndSortContainer">
+          <Sort onSort={onSort} showSort={showSort} />
+          <Filter onFilter={onFilter} showFilter={showFilter} />
         </div>
+        <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
       </div>
-      <div className="filterAndSortContainer">
-        <Sort onSort={onSort} />
-        <Filter onFilter={onFilter} />
-      </div>
-      <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
     </>
   );
 };

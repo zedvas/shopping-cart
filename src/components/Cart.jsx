@@ -29,7 +29,7 @@ const Cart = ({ cartProducts, changeQuantity, totalPrice, totalQuantity }) => {
       <div className="products">{getToDisplay()}</div>
       <div className="cart-info">
         <div className="totals">
-          <Price priceName={"TOTAL PRICE"} price={totalPrice} />
+          <Price priceName={"TOTAL"} price={totalPrice} />
           <p>
             TOTAL QTY: <span className="quantity">{totalQuantity}</span>
           </p>

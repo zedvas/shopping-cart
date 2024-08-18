@@ -15,22 +15,25 @@
 
 body {
   width: 100vw;
-  background-color: rgba(255, 0, 230, 0.375);
   font-family: "Karla", sans-serif;
   position: relative;
-}
-
-#root {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
+.rootContainer {
+  padding: 0 0.5em;
+  max-width: 1080px;
+}
 header {
-  background-color: rgb(114, 7, 124);
-  height: 100%;
-  width: 100%;
+  background: rgb(215, 207, 217);
+  height: 20vh;
+  width: 100vw;
   margin-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icons {
@@ -46,6 +49,16 @@ header {
   align-items: center;
 }
 
+.icons button {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  padding: 0.2em 1em;
+  margin-right: 1em;
+}
 .container,
 .card,
 .infoContainer {
@@ -65,9 +78,20 @@ header {
 
 .card {
   width: 310px;
-  margin: 1em 3em;
+  margin: 1em 4em;
 }
 
+.detailsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 h1,
 h2 {
   font-family: "KirangHaerang-Regular", sans-serif;
@@ -76,12 +100,22 @@ h2 {
 }
 
 h1 {
-  color: rgb(231, 65, 246);
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(6, 0, 101, 1) 0%,
+    rgba(255, 8, 229, 1) 20%,
+    rgba(255, 8, 229, 1) 70%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
+  text-shadow: -1px 1px rgba(0, 0, 255, 0.392);
 }
 
 h2 {
-  color: rgb(26, 39, 186);
+  color: rgb(183, 26, 186);
   margin-top: -20px;
   margin-bottom: 20px;
   line-height: 50px;
@@ -94,11 +128,15 @@ svg {
 }
 
 .infoContainer {
-  background-color: #ffffff84;
-  color: blue;
-  border-radius: 40px;
+  justify-content: space-between;
+  font-weight: 400;
+  /* color: blue; */
+  /* border-radius: 40px; */
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  box-shadow: -4px -5px 70px rgb(169, 167, 167);
   width: 100%;
-  height: 240px;
+  height: 170px;
   padding: 2em;
 }
 
@@ -129,7 +167,11 @@ button {
 .price,
 p {
   font-size: 2rem;
-  font-weight: 300;
+  /* font-weight: 300; */
+}
+
+.price {
+  font-weight: 700;
 }
 
 .filterButtonContainer {
@@ -138,12 +180,10 @@ p {
   align-items: center;
   flex-wrap: wrap;
   width: 100vw;
-  background-color: red;
-  display: none;
 }
 .filterButtonContainer button {
-  background-color: blue;
-  color: whitesmoke;
+  background-color: #000;
+  color: #fff;
   margin: 0.5em 1em;
   padding: 1em 2em;
   border-radius: 30px;
@@ -157,7 +197,6 @@ p {
 }
 
 select {
-  display: none;
   align-self: center;
   width: 300px;
 }
@@ -171,10 +210,10 @@ select {
 .cart h2 {
   font-size: 3rem;
 }
-.cartProduct .infoContainer {
-  /* height: 200px; */
-}
 
+.cart {
+  display: none;
+}
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -207,6 +246,15 @@ option {
   font-size: 3rem;
 }
 
+.hide {
+  display: none;
+}
+
+.showSort,
+.showFilter {
+  background-color: #000;
+  color: #fff;
+}
 /* :root {
   font-size: 62.5%;
 }
