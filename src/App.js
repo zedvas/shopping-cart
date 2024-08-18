@@ -4,21 +4,32 @@ import Products from "./components/Products";
 import Cart from "./components/Cart";
 import "./App.css";
 import Sort from "./components/Sort";
+import Filter from "./components/Filter";
+import Header from "./components/Header";
+import {
+  Favorite,
+  ShoppingCart,
+  Tune,
+  Sort as SortIcon,
+} from "@mui/icons-material";
+import { Badge } from "@mui/material";
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [filteredAndSorted, setFilteredAndSorted] = useState([]);
 
   //get data and format as required
   const getData = async () => {
     try {
-    console.log("fetch");
-    const data = await axios.get("pets.json");
-    console.log(data.data);
+      console.log("fetch");
+      const data = await axios.get("pets.json");
+      console.log(data.data);
       data.data.map((item) => {
         item.price = Math.round(Number(item.price));
         return item;
       });
       setData(data.data);
+      setFilteredAndSorted(data.data);
       console.log(data.data);
     } catch (e) {
       console.log("oops something went wrong", e.message);
@@ -82,7 +93,7 @@ const App = () => {
   //Get value for sort option and set state
   //Keep getting warning about sort needing to return a func even though this already does. Why??
   const onSort = (value) => {
-    const _data = [...data];
+    const _data = [...filteredAndSorted];
     const filteredData = _data.sort((a, b) => {
       if (value === "priceAsc") {
         if (a.price < b.price) {
@@ -100,7 +111,21 @@ const App = () => {
       return 0;
     });
 
-    setData(filteredData); // Can it be done without setting state again?
+    setFilteredAndSorted(filteredData);
+  };
+
+  const onFilter = (e) => {
+    console.log(e.target.value);
+    const _data = [...data];
+    if (e.target.value === "" || e.target.value === undefined) {
+      setFilteredAndSorted(data);
+    } else {
+      const filtered = _data.filter((pet) => {
+        // console.log(pet.category.toLowerCase(), e.target.value)
+        return pet.category.toLowerCase() === e.target.value.toLowerCase();
+      });
+      setFilteredAndSorted(filtered);
+    }
   };
 
   //Show loading message if no data
@@ -130,11 +155,37 @@ const App = () => {
         totalQuantity={totalQuantity}
         changeQuantity={changeQuantity}
       />
-      <h1 className="likedMessage">
-        You have liked {getTotalLiked()} products
-      </h1>
-      <Sort onSort={onSort} />
-      <Products onLike={onLike} onAdd={onAdd} products={data} />
+      <Header />
+      <div className="icons">
+        <div>
+          <p>Sort</p>
+          <SortIcon sx={{ fontSize: "3rem" }} />
+          <p>Filter</p>
+          <Tune sx={{ fontSize: "3rem" }} />
+        </div>
+        <div>
+          <Badge
+            badgeContent={getTotalLiked()}
+            color="secondary"
+            showZero
+            sx={{ margin: "1em" }}
+          >
+            <Favorite sx={{ fontSize: "3rem" }} />
+          </Badge>
+          <Badge
+            badgeContent={totalQuantity}
+            color="secondary"
+            sx={{ margin: "1em" }}
+          >
+            <ShoppingCart sx={{ fontSize: "3rem" }} />
+          </Badge>
+        </div>
+      </div>
+      <div className="filterAndSortContainer">
+        <Sort onSort={onSort} />
+        <Filter onFilter={onFilter} />
+      </div>
+      <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
     </>
   );
 };

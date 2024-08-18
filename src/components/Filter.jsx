@@ -1,16 +1,17 @@
 //no functionality yet. Will integrate into sort function and adapt
 
-const Filter = ({ onFilter }) => {
+const Filter = ({onFilter}) => {
   return (
-    <select onChange={(e) => onFilter(e.target.value)}>
-      <option value="">All categories</option>
-      <option value="electronics">Electronics</option>
-      <option value="jewelery">Jewelery</option>
-      <option value="mensClothing">Men's clothing</option>
-      <option value="womensClothing">Women's clothing</option>
-    </select>
+    <div className="filterButtonContainer" onClick={onFilter}>
+      <button value="">All pets</button>
+      <button value="cats">Cats</button>
+      <button value="dogs">Dogs</button>
+      <button value="frogs">Frogs</button>
+      <button value="rabbits">Rabbits</button>
+      <button value="birds">Birds</button>
+      <button value="other">Other</button>
+    </div>
   );
 };
 
 export default Filter;
-

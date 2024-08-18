@@ -15,14 +15,29 @@ const CartProduct = ({
 }) => {
   return (
     <div className="cartProduct">
-      <Title title={title} />
-      <Image title={title} image={image} width={50} />
-      <Price price={price} priceName={"Unit price"} />
-      <Price price={totalPrice} priceName={"Total Price"} />
-      <Quantity quantity={quantity} />
-      <div className="button-container">
-        <Button name="+" value="increment" id={id} callback={changeQuantity} />
-        <Button name="-" value="decrement" id={id} callback={changeQuantity} />
+      <div>
+        <Image title={title} image={image} width={50} />
+        <Title title={title} />
+      </div>
+      <div className="infoContainer">
+        <Price price={price} priceName={"Unit price"} />
+        <Price price={totalPrice} priceName={"Total Price"} />
+
+        <div className="buttonContainer">
+          <Button
+            name="increment"
+            value="increment"
+            id={id}
+            callback={changeQuantity}
+          />
+          <Quantity quantity={quantity} />
+          <Button
+            name="decrement"
+            value="decrement"
+            id={id}
+            callback={changeQuantity}
+          />
+        </div>
       </div>
     </div>
   );
