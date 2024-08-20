@@ -17,10 +17,10 @@ const CartProduct = ({
     <div className="cartProduct">
       <div>
         <Image title={title} image={image} width={50} />
-        <Title title={title} />
       </div>
-      <div className="infoContainer">
-        <Price price={price} priceName={"Unit price"} />
+      <div className="infoContainer">        <Title title={title} />
+
+        <Price price={price} priceName={"Hourly price"} />
         <Price price={totalPrice} priceName={"Total Price"} />
 
         <div className="buttonContainer">

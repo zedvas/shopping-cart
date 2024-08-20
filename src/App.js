@@ -19,6 +19,7 @@ const App = () => {
   const [filteredAndSorted, setFilteredAndSorted] = useState([]);
   const [showSort, setShowSort] = useState();
   const [showFilter, setShowFilter] = useState();
+  const [cartVisible, setCartVisible] = useState(false);
 
   //get data and format as required
   const getData = async () => {
@@ -136,6 +137,11 @@ const App = () => {
     setShowFilter(!showFilter);
   };
 
+  const displayCart = () => {
+    setCartVisible(!cartVisible);
+    return;
+  }
+
   //Show loading message if no data
   if (!data) {
     return <h2>Hold tight, we're getting your products...</h2>;
@@ -164,6 +170,8 @@ const App = () => {
           totalPrice={totalPrice}
           totalQuantity={totalQuantity}
           changeQuantity={changeQuantity}
+          cartVisible={cartVisible}
+          displayCart={displayCart}
         />
         <div className="icons">
           <div>
@@ -195,7 +203,7 @@ const App = () => {
               color="secondary"
               sx={{ margin: "1em" }}
             >
-              <ShoppingCart sx={{ fontSize: "3rem" }} />
+              <ShoppingCart sx={{ fontSize: "3rem" }} onClick={displayCart}/>
             </Badge>
           </div>
         </div>

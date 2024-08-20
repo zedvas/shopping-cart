@@ -1,11 +1,12 @@
 import CartProduct from "./CartProduct";
 import Button from "./Button";
 import Price from "./Price";
+import { Close } from "@mui/icons-material";
 
-const Cart = ({ cartProducts, changeQuantity, totalPrice, totalQuantity }) => {
+const Cart = ({ cartProducts, changeQuantity, totalPrice, totalQuantity, cartVisible, displayCart }) => {
   const getToDisplay = () => {
     if (cartProducts.length === 0) {
-      return <h1>Nothing to show yet! Try adding some items to your cart</h1>;
+      return <p className="noProducts">Nothing to show yet! Try adding some items to your cart</p>;
     } else {
       return cartProducts.map((cartProduct) => {
         return (
@@ -24,10 +25,11 @@ const Cart = ({ cartProducts, changeQuantity, totalPrice, totalQuantity }) => {
     }
   };
   return (
-    <div className="cart">
+    <div className={cartVisible? "cart cartVisible" : "cart"}>
+      <Close className="closeCart" sx={{alignSelf: "flex-end"}} onClick={displayCart}/>
       <h1>Your Shopping Cart</h1>
       <div className="products">{getToDisplay()}</div>
-      <div className="cart-info">
+      <div className="cartInfo">
         <div className="totals">
           <Price priceName={"TOTAL"} price={totalPrice} />
           <p>
