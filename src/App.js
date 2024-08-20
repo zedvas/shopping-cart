@@ -23,16 +23,13 @@ const App = () => {
   //get data and format as required
   const getData = async () => {
     try {
-      console.log("fetch");
       const data = await axios.get("pets.json");
-      console.log(data.data);
       data.data.map((item) => {
         item.price = Math.round(Number(item.price));
         return item;
       });
       setData(data.data);
       setFilteredAndSorted(data.data);
-      console.log(data.data);
     } catch (e) {
       console.log("oops something went wrong", e.message);
     }
