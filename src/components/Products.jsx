@@ -1,7 +1,7 @@
 import Product from "./Product";
 const Products = ({ products, onLike, onAdd }) => {
   return (
-    <div className="container">
+    <div className="productsContainer">
       {products.map((product) => {
         return (
           <Product

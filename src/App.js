@@ -159,15 +159,15 @@ const App = () => {
   });
 
   return (
-    <>
-      <Cart
-        cartProducts={cartProducts}
-        totalPrice={totalPrice}
-        totalQuantity={totalQuantity}
-        changeQuantity={changeQuantity}
-      />
-      <Header />
-      <div className="rootContainer">
+      <>
+        <Header />
+        <div className="container">
+        <Cart
+          cartProducts={cartProducts}
+          totalPrice={totalPrice}
+          totalQuantity={totalQuantity}
+          changeQuantity={changeQuantity}
+        />
         <div className="icons">
           <div>
             <button
@@ -208,7 +208,7 @@ const App = () => {
         </div>
         <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
       </div>
-    </>
+      </>
   );
 };
 

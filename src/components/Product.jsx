@@ -12,8 +12,8 @@ const Product = ({
     <>
       <div className="card">
         <Image title={title} image={image} />
+        <Title title={title} />
         <div className="infoContainer">
-          <Title title={title} />
           <div className="detailsContainer">
             <div className="details">
               <Price price={price} />

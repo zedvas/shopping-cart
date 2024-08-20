@@ -17,15 +17,8 @@ body {
   width: 100vw;
   font-family: "Karla", sans-serif;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.rootContainer {
-  padding: 0 0.5em;
-  max-width: 1080px;
-}
 header {
   background: rgb(215, 207, 217);
   height: 20vh;
@@ -36,11 +29,20 @@ header {
   align-items: center;
 }
 
+.container {
+  max-width: 1080px;
+  padding: 0 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .icons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90vw;
+  width: 100%;
 }
 
 .icons div {
@@ -59,7 +61,8 @@ header {
   padding: 0.2em 1em;
   margin-right: 1em;
 }
-.container,
+
+.productsContainer,
 .card,
 .infoContainer {
   display: flex;
@@ -67,7 +70,7 @@ header {
   align-items: center;
 }
 
-.container {
+.productsContainer {
   flex-wrap: wrap;
 }
 
@@ -78,7 +81,7 @@ header {
 
 .card {
   width: 310px;
-  margin: 1em 4em;
+  margin: 1em;
 }
 
 .detailsContainer {
@@ -92,10 +95,10 @@ header {
   align-items: center;
   justify-content: center;
 }
+
 h1,
 h2 {
   font-family: "KirangHaerang-Regular", sans-serif;
-  font-size: 9rem;
   text-align: center;
 }
 
@@ -111,7 +114,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
-  /* text-shadow: -1px 1px rgba(0, 0, 255, 0.392); */
+  font-size: 9rem;
 }
 
 h2 {
@@ -119,6 +122,8 @@ h2 {
   margin-top: -10px;
   margin-bottom: 20px;
   line-height: 50px;
+  position: relative;
+  font-size: 7.5rem;
 }
 
 button,
@@ -130,16 +135,18 @@ svg {
 .infoContainer {
   justify-content: space-between;
   font-weight: 400;
-  /* color: blue; */
-  /* border-radius: 40px; */
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   box-shadow: -4px -5px 70px rgb(169, 167, 167);
-  background: rgb(255,255,255);
-  background: linear-gradient(180deg, rgba(212,212,212,0.8270000000000001) 0%, rgba(255,255,255,1) 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(212, 212, 212, 0.8270000000000001) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   width: 100%;
-  height: 170px;
   padding: 2em;
+  margin-top: -30px;
 }
 
 img {
@@ -169,7 +176,6 @@ button {
 .price,
 p {
   font-size: 2rem;
-  /* font-weight: 300; */
 }
 
 .price {
@@ -183,6 +189,7 @@ p {
   flex-wrap: wrap;
   width: 100vw;
 }
+
 .filterButtonContainer button {
   background-color: #000;
   color: #fff;
@@ -209,6 +216,7 @@ select {
   align-items: center;
   margin: 1em 0;
 }
+
 .cart h2 {
   font-size: 3rem;
 }
@@ -216,6 +224,7 @@ select {
 .cart {
   display: none;
 }
+
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -227,7 +236,7 @@ select {
   text-align: center;
   border-radius: 30px;
   padding: 0.5em 1em;
-  margin-bottom: 1em;
+  margin: 1.5em 0;
   font-family: "Karla", sans-serif;
 }
 
@@ -257,104 +266,3 @@ option {
   background-color: #000;
   color: #fff;
 }
-/* :root {
-  font-size: 62.5%;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product {
-  width: 250px;
-border:1px solid black;
-border-radius: 20px;
-margin: 1em;
-display:flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: center;
-position: relative;}
-.product .title {
-  text-align: center;
-}
-.cart {
-  background-color:#bcd3f4;
-  ;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  position: sticky;
-  z-index: 1;
-  top: 0;
-  right: 0;
-}
-.cart-info {
-  display: flex;
-  justify-content: flex-end
-}
-.cart > .products {
-  max-height: 40vh;
-  overflow-y: scroll;
-  scrollbar-width: 30px;
-
-
-}
-.price::before {
-  content: '£';
-}
-.button {
-  border:none;
-  padding: 1em;
-  border-radius: 10px;
-  margin:0.5em;
-  cursor: pointer
-}
-.button.add {
-  background-color: rgba(136, 174, 75, 0.486);
-}
-.button.add:hover {
-  background-color: rgba(136, 174, 75);
-}
-.button.like {
-  background-color: rgba(174, 75, 129, 0.504);
-}
-.button.like:hover {
-  background-color:rgb(174, 75, 129);
-}
-.liked {
-  background-color:rgb(174, 75, 129);
-}
-.added {
-  background-color: rgba(136, 174, 75);
-}
-.cartProduct {
-  display:flex;
-  width: 100%;
-  justify-content: space-between;
-  margin: 1em 0;
-  background-color: #7ea4ea;
-
-}
-
-.cartProduct .title {
-width: 40%;
-}
-.cartProduct .buttonContainer {
-  width: 10%;
-}
-
-.button.checkout {
-  background-color: rgb(218, 166, 36);
-}
-
-.cart {
-  width: 100%;
-  text-align: left;
-
-}
-
-.price, .quantity {
-  font-weight:800;
-} */
