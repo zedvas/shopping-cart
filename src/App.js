@@ -158,7 +158,7 @@ const App = () => {
       totalPrice = totalPrice + item.price * item.quantity;
       return item.added;
     }
-    return false; //I thought this would clear the warning message but it doesn't?
+    return false; 
   });
 
   return (
