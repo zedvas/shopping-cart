@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 import "./App.css";
@@ -13,6 +12,7 @@ import {
   Sort as SortIcon,
 } from "@mui/icons-material";
 import { Badge } from "@mui/material";
+import pets from "./pets.json";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -22,18 +22,13 @@ const App = () => {
   const [cartVisible, setCartVisible] = useState(false);
 
   //get data and format as required
-  const getData = async () => {
-    try {
-      const data = await axios.get("pets.json");
-      data.data.map((item) => {
-        item.price = Math.round(Number(item.price));
-        return item;
-      });
-      setData(data.data);
-      setFilteredAndSorted(data.data);
-    } catch (e) {
-      console.log("oops something went wrong", e.message);
-    }
+  const getData = () => {
+    const _pets = pets.map((item) => {
+      item.price = Math.round(Number(item.price));
+      return item;
+    });
+    setData(_pets);
+    setFilteredAndSorted(_pets);
   };
 
   //useEffect to run func
@@ -140,7 +135,7 @@ const App = () => {
   const displayCart = () => {
     setCartVisible(!cartVisible);
     return;
-  }
+  };
 
   //Show loading message if no data
   if (!data) {
@@ -158,13 +153,13 @@ const App = () => {
       totalPrice = totalPrice + item.price * item.quantity;
       return item.added;
     }
-    return false; 
+    return false;
   });
 
   return (
-      <>
-        <Header />
-        <div className="container">
+    <>
+      <Header />
+      <div className="container">
         <Cart
           cartProducts={cartProducts}
           totalPrice={totalPrice}
@@ -203,7 +198,7 @@ const App = () => {
               color="secondary"
               sx={{ margin: "1em" }}
             >
-              <ShoppingCart sx={{ fontSize: "3rem" }} onClick={displayCart}/>
+              <ShoppingCart sx={{ fontSize: "3rem" }} onClick={displayCart} />
             </Badge>
           </div>
         </div>
@@ -213,7 +208,7 @@ const App = () => {
         </div>
         <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
       </div>
-      </>
+    </>
   );
 };
 
