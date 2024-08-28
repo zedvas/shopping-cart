@@ -180,7 +180,7 @@ const App = () => {
   };
 
   //useEffect to run func
-  useEffect(() => getData, []); //double check
+  useEffect(() => getData, [getData]); //double check
 
   //funcs are sent to children as callbacks sending back ids
   const onLike = (id) => {
