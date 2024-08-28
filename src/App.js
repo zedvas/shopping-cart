@@ -12,7 +12,7 @@ import {
   Sort as SortIcon,
 } from "@mui/icons-material";
 import { Badge } from "@mui/material";
-import pets from "./pets.json";
+import {pets} from "./pets.js";
 
 const App = () => {
   const [data, setData] = useState([]);

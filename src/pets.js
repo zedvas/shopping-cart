@@ -1,4 +1,4 @@
- [
+ export const pets = [
     {
       "id": "1",
       "title": "Sprinkles",
