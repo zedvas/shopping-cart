@@ -23,6 +23,7 @@ const App = () => {
 
   //get data and format as required
   const getData = () => {
+    console.log(pets);
     const _pets = pets.map((item) => {
       item.price = Math.round(Number(item.price));
       return item;
