@@ -12,7 +12,7 @@ import {
   Sort as SortIcon,
 } from "@mui/icons-material";
 import { Badge } from "@mui/material";
-import {pets} from "./pets.js";
+import axios from "axios";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -22,9 +22,9 @@ const App = () => {
   const [cartVisible, setCartVisible] = useState(false);
 
   //get data and format as required
-  const getData = () => {
-    console.log(pets);
-    const _pets = pets.map((item) => {
+  const getData = async () => {
+    const {data} = await axios.get("pets.json");
+    const _pets = data.map((item) => {
       item.price = Math.round(Number(item.price));
       return item;
     });
@@ -33,7 +33,9 @@ const App = () => {
   };
 
   //useEffect to run func
-  useEffect(() => getData, []); //double check
+  useEffect(() => {
+    getData();
+  }, []);
 
   //funcs are sent to children as callbacks sending back ids
   const onLike = (id) => {
@@ -111,7 +113,6 @@ const App = () => {
   };
 
   const onFilter = (e) => {
-    console.log(e.target.value);
     const _data = [...data];
     if (e.target.value === "" || e.target.value === undefined) {
       return;
@@ -119,7 +120,6 @@ const App = () => {
       setFilteredAndSorted(data);
     } else {
       const filtered = _data.filter((pet) => {
-        // console.log(pet.category.toLowerCase(), e.target.value)
         return pet.category.toLowerCase() === e.target.value.toLowerCase();
       });
       setFilteredAndSorted(filtered);
