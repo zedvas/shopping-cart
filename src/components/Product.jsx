@@ -12,9 +12,9 @@ const Product = ({
     <>
       <div className="card">
         <Image title={title} image={image} />
-        <Title title={title} />
         <div className="infoContainer">
-          <div className="detailsContainer">
+                  <Title title={title} />
+<div className="detailsContainer">
             <div className="details">
               <Price price={price} />
               <Personality rating={rating} />

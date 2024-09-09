@@ -5,13 +5,7 @@ import "./App.css";
 import Sort from "./components/Sort";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
-import {
-  Favorite,
-  ShoppingCart,
-  Tune,
-  Sort as SortIcon,
-} from "@mui/icons-material";
-import { Badge } from "@mui/material";
+import { Tune, Sort as SortIcon } from "@mui/icons-material";
 import axios from "axios";
 
 const App = () => {
@@ -23,7 +17,7 @@ const App = () => {
 
   //get data and format as required
   const getData = async () => {
-    const {data} = await axios.get("pets.json");
+    const { data } = await axios.get("pets.json");
     const _pets = data.map((item) => {
       item.price = Math.round(Number(item.price));
       return item;
@@ -159,7 +153,11 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <Header
+        getTotalLiked={getTotalLiked}
+        totalQuantity={totalQuantity}
+        displayCart={displayCart}
+      />
       <div className="container">
         <Cart
           cartProducts={cartProducts}
@@ -184,23 +182,6 @@ const App = () => {
             >
               <span>Filter</span> <Tune sx={{ fontSize: "3rem" }} />
             </button>
-          </div>
-          <div>
-            <Badge
-              badgeContent={getTotalLiked()}
-              color="secondary"
-              showZero
-              sx={{ margin: "1em" }}
-            >
-              <Favorite sx={{ fontSize: "3rem" }} />
-            </Badge>
-            <Badge
-              badgeContent={totalQuantity}
-              color="secondary"
-              sx={{ margin: "1em" }}
-            >
-              <ShoppingCart sx={{ fontSize: "3rem" }} onClick={displayCart} />
-            </Badge>
           </div>
         </div>
         <div className="filterAndSortContainer">

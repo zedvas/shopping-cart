@@ -9,7 +9,7 @@ const Personality = ({ rating }) => {
         value={rating}
         disabled
         precision={0.1}
-        sx={{ fontSize: "20px", color: "#476d00", marginTop: "1em"}}
+        sx={{ fontSize: "20px", marginTop: "1em"}}
       />
     </>
   );
