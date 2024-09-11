@@ -1,20 +1,23 @@
-Shopping cart app using API data from https://fakestoreapi.com/
 
-This shopping cart app implements the following features:
-- Likes counter with chaneg of button colour on liked items
-- Add to cart button with multiple clicks updating quantity in cart
-- Buttons to change quantity in cart
-- Automatic cart total updates
-- Deleting item from cart when reducing item with quantity of 1.
-- Sort feature
+# Rent-A-Pet
 
-To be implemented: 
-- Filter by category feature
-- Search feature (?)
+Rent-A-Pet is a mock e-commerce platform built with React, allowing users to explore, sort, and filter products. It features automated cart calculations and dynamic UI feedback for enhanced user interaction. The app includes a like feature with real-time state management and visual feedback.
 
- “Designed by Freepik” www.freepik.com
- <a href="https://gratisography.com/photo/boxer-dog-animal/">Photo</a> courtesy of <a href="https://gratisography.com">Gratisography</a>
- Copyright 2018 The Kirang Haerang Project Authors
+## Tech Stack
 
-This Font Software is licensed under the SIL Open Font License, Version 1.1.
-This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
+JavaScript, React, Material UI
+## Features
+
+- Sort products
+- Filter products
+- 'Like' products with visual tally of liked items
+- Add products to cart and update cart quantity from both within cart component as well as main product page
+- Automatic deletion from cart when reducing quantity from 1 to 0
+- Conditional rendering message for empty cart scenario
+
+## Demo
+
+https://rent-a-pet.netlify.app/
+## Acknowledgements
+
+ - [Gratisography](https://gratisography.com) - All images are courtesy of Gratisography
