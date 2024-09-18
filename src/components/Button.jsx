@@ -5,8 +5,9 @@ import {
   FavoriteBorder,
   Remove,
 } from "@mui/icons-material";
+import { Badge } from "@mui/material";
 
-const Button = ({ liked, name, value, id, callback }) => {
+const Button = ({ liked, name, value, id, callback, quantity, added }) => {
   const classText = liked ? `liked button {name}` : `button ${name}`;
 
   return (
@@ -16,7 +17,16 @@ const Button = ({ liked, name, value, id, callback }) => {
         callback(id, value);
       }}
     >
-      {name === "add" ? (
+      {name === "add" && added && quantity !== 0 ? (
+        <Badge
+          badgeContent={quantity}
+          color="secondary"
+          showZero
+          sx={{ margin: "1em" }}
+        >
+          <AddCircle sx={{ fontSize: "30px", color: "#4141f2" }} />
+        </Badge>
+      ) : name === "add" ? (
         <AddCircle sx={{ fontSize: "30px", color: "#4141f2" }} />
       ) : name === "like" && liked ? (
         <Favorite sx={{ fontSize: "30px", color: "rgb(244, 87, 113)" }} />

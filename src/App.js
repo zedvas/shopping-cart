@@ -188,7 +188,7 @@ const App = () => {
           <Sort onSort={onSort} showSort={showSort} />
           <Filter onFilter={onFilter} showFilter={showFilter} />
         </div>
-        <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted} />
+        <Products onLike={onLike} onAdd={onAdd} products={filteredAndSorted}/>
       </div>
     </>
   );
