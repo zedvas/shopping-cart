@@ -1,7 +1,7 @@
 const Image = ({image, title }) => {
   return (
     <div className="imgContainer">
-    <img
+    <img width={"300px"}
       src={image}
       alt={title}
     /></div>
