@@ -22,16 +22,16 @@ const Button = ({ liked, name, value, id, callback, quantity, added }) => {
           badgeContent={quantity}
           color="secondary"
           showZero
-          sx={{ margin: "1em" }}
+          sx={{ marginRight: "0.5em" }}
         >
-          <AddCircle sx={{ fontSize: "30px", color: "#4141f2" }} />
+          <AddCircle sx={{ fontSize: "25px", color: "#4141f2" }} />
         </Badge>
       ) : name === "add" ? (
-        <AddCircle sx={{ fontSize: "30px", color: "#4141f2" }} />
+        <AddCircle sx={{ fontSize: "25px", color: "#4141f2" }} />
       ) : name === "like" && liked ? (
-        <Favorite sx={{ fontSize: "30px", color: "rgb(244, 87, 113)" }} />
+        <Favorite sx={{ fontSize: "25px", color: "rgb(244, 87, 113)" }} />
       ) : name === "like" && !liked ? (
-        <FavoriteBorder sx={{ fontSize: "30px", color: "rgb(244, 87, 113)" }} />
+        <FavoriteBorder sx={{ fontSize: "25px", color: "rgb(244, 87, 113)" }} />
       ) : name === "increment" ? (
         <Add sx={{ fontSize: "50px", color: "rgb(244, 87, 113)" }} />
       ) : name === "decrement" ? (
