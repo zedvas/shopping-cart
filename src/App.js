@@ -7,6 +7,7 @@ import Filter from "./components/Filter";
 import Header from "./components/Header";
 import { Tune, Sort as SortIcon } from "@mui/icons-material";
 import axios from "axios";
+import Liked from "./components/Liked";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -14,6 +15,7 @@ const App = () => {
   const [showSort, setShowSort] = useState();
   const [showFilter, setShowFilter] = useState();
   const [cartVisible, setCartVisible] = useState(false);
+  const [likedVisible, setLikedVisible] = useState(false);
 
   //get data and format as required
   const getData = async () => {
@@ -132,6 +134,11 @@ const App = () => {
     return;
   };
 
+  const displayLiked = () => {
+    setLikedVisible(!likedVisible);
+    return;
+  };
+
   //Show loading message if no data
   if (!data) {
     return <h2>Hold tight, we're getting your products...</h2>;
@@ -151,12 +158,22 @@ const App = () => {
     return false;
   });
 
+  let likedProducts = [...data];
+
+  likedProducts = likedProducts.filter((item) => {
+    if (item.liked) {
+      return item.liked;
+    }
+    return false;
+  });
+
   return (
     <>
       <Header
         getTotalLiked={getTotalLiked}
         totalQuantity={totalQuantity}
         displayCart={displayCart}
+        displayLiked={displayLiked}
       />
       <div className="container">
         <Cart
@@ -166,6 +183,11 @@ const App = () => {
           changeQuantity={changeQuantity}
           cartVisible={cartVisible}
           displayCart={displayCart}
+        />
+        <Liked
+          likedProducts={likedProducts}
+          likedVisible={likedVisible}
+          displayLiked={displayLiked}
         />
         <div className="icons">
           <div>

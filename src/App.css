@@ -232,7 +232,7 @@ option {
   position: fixed;
   z-index: 2;
   width: 100vw;
-  height:90%;
+  height: 90%;
   max-width: 1080px;
   margin: auto;
   top: 0;
@@ -262,7 +262,8 @@ option {
   padding: 0.2em 2em;
 }
 
-.cart .imgContainer {
+.cart .imgContainer,
+.likedProduct .imgContainer {
   width: 20vh;
   height: 20vh;
 }
@@ -274,7 +275,8 @@ option {
   padding-bottom: 0;
 }
 
-.cartProduct {
+.cartProduct,
+.likedProduct {
   margin: 1em 0;
   border-bottom: 2px solid black;
   padding-bottom: 2em;
@@ -292,7 +294,8 @@ option {
   width: 100%;
 }
 
-.cartProduct {
+.cartProduct,
+.likedProduct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -332,6 +335,19 @@ option {
   color: #000;
   margin-top: 1.8em;
 }
+
+.likedProduct {
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likedProduct h2 {
+  align-self: flex-end;
+}
+
 .hide {
   display: none;
 }

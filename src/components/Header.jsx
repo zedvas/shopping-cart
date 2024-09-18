@@ -4,7 +4,7 @@ import {
 } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 
-const Header = ({getTotalLiked, totalQuantity, displayCart}) => {
+const Header = ({getTotalLiked, totalQuantity, displayCart, displayLiked}) => {
   return (
     <header>
       <div className="headerContainer">
@@ -16,7 +16,7 @@ const Header = ({getTotalLiked, totalQuantity, displayCart}) => {
               showZero
               sx={{ margin: "1em" }}
             >
-              <Favorite sx={{ fontSize: "3rem" }} />
+              <Favorite sx={{ fontSize: "3rem" }} onClick={displayLiked}/>
             </Badge>
             <Badge
               badgeContent={totalQuantity}
