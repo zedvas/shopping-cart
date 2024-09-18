@@ -1,5 +1,3 @@
-import CartProduct from "./CartProduct";
-import Button from "./Button";
 import { Close } from "@mui/icons-material";
 import LikedProduct from "./LikedProduct";
 
